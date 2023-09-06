@@ -1,0 +1,39 @@
+LIBRARY ieee;
+USE ieee.std_logic_1164.all;
+ENTITY bcd_7seg IS
+PORT (
+entra : IN STD_LOGIC_VECTOR(3 DOWNTO 0);
+sai : OUT STD_LOGIC_VECTOR(6 DownTO 0)
+);
+END bcd_7seg;
+ARCHITECTURE trans OF bcd_7seg IS
+BEGIN
+PROCESS (entra)
+BEGIN
+CASE entra IS
+WHEN "0000" =>
+sai <= NOT("1111110");
+WHEN "0001" =>
+sai <= NOT("0110000");
+WHEN "0010" =>
+sai <= NOT("1101101");
+WHEN "0011" =>
+sai <= NOT("1111001");
+WHEN "0100" =>
+sai <= NOT("0110011");
+WHEN "0101" =>
+sai <= NOT("1011011");
+WHEN "0110" =>
+sai <= NOT("1011111");
+WHEN "0111" =>
+sai <= NOT("1110000");
+WHEN "1000" =>
+sai <= NOT("1111111");
+WHEN "1001" =>
+sai <= NOT("1111011");
+WHEN OTHERS =>
+sai <= NOT("0000000");
+END CASE;
+END PROCESS;
+
+END trans;
